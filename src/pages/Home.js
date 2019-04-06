@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import {
-  Container,
   Col,
   Row,
 } from 'reactstrap';
@@ -15,14 +14,14 @@ class Home extends Component {
       { placement: 'right', title: 'Tooltip on right' },
       { placement: 'bottom', title: 'Tooltip on bottom' },
       { placement: 'left', title: 'Tooltip on left' },
-      { placement: 'top', title: <Fragment><em>Tooltip</em> <u>with</u> <b>HTML</b></Fragment> },
+      { placement: 'top', title: <><em>Tooltip</em> <u>with</u> <b>HTML</b></> },
     ],
   }
 
   renderTooltips = () => {
     const { tooltips } = this.state;
     const tooltipContainers = tooltips.map(tooltip => (
-      <Col lg="2" md="2" sm="4" xs="12" key={tooltip.placement}>
+      <Col md={{ size: 'auto' }} sm="4" xs="12" key={tooltip.placement}>
         <TooltipContainer tooltip={tooltip} />
       </Col>
     ));
@@ -32,11 +31,12 @@ class Home extends Component {
 
   render(){
     return(
-      <Container>
+      <>
+        <Title>Tooltip Excercise by Macarena Gómez</Title>
         <StyledRow>
           {this.renderTooltips()}
         </StyledRow>
-      </Container>
+      </>
     );
   }
 }
@@ -44,5 +44,15 @@ class Home extends Component {
 export default Home;
 
 const StyledRow = styled(Row)`
-  padding: 20% 2%;
+  padding: 10% 2%;
+  margin: auto;
+  justify-content: center;
+`;
+
+const Title = styled.h1`
+  padding: 2%;
+  font-size: 2em;
+  font-weight: 100;
+  color: #fff;
+  background-color: #563d7c;
 `;

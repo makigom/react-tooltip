@@ -91,12 +91,13 @@ const TooltipText = styled.span`
   visibility: hidden;
   background-color: #000;
   color: #fff;
-  padding: 3%;
-  border-radius: 6px;
+  width: 100%;
+  border-radius: 4px;
   position: absolute;
   z-index: 1;
-  display: inline-block;
-  margin: 4%;
+  text-align: center;
+  margin: 3% 0;
+  padding: 2%;
   bottom: ${({ placement }) => placement.bottom || 'unset'};
   left: ${({ placement }) => placement.left || 'unset'};
   top: ${({ placement }) => placement.top || 'unset'};
