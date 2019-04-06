@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import {
   Container,
@@ -15,7 +15,7 @@ class Home extends Component {
       { placement: 'right', title: 'Tooltip on right' },
       { placement: 'bottom', title: 'Tooltip on bottom' },
       { placement: 'left', title: 'Tooltip on left' },
-      { placement: 'top', title: 'Tooltip with HTML' },
+      { placement: 'top', title: <Fragment><em>Tooltip</em> <u>with</u> <b>HTML</b></Fragment> },
     ],
   }
 

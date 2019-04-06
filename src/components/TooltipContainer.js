@@ -13,13 +13,49 @@ const TooltipContainer = (props) => {
 
     switch(placement){
       case 'top':
-       return 'bottom: 100%; left: 0;';
+        return {
+          bottom: '105%',
+          left: '0',
+          arrow: {
+            top: '100%',
+            left: '50%',
+            borderColor: '#000 transparent transparent transparent',
+            marginLeft: '-5px',
+          }
+        }
       case 'right':
-        return 'top: 0; left: 100%;';
+        return {
+          left: '105%',
+          top: '0',
+          arrow: {
+            top: '50%',
+            right: '100%',
+            borderColor: 'transparent #000 transparent transparent',
+            marginTop: '-5px',
+          }
+        }
       case 'bottom':
-        return 'top: 100%; right: 0;';
+        return {
+          top: '105%',
+          right: '0',
+          arrow: {
+            bottom: '100%',
+            left: '50%',
+            borderColor: 'transparent transparent #000 transparent',
+            marginLeft: '-5px',
+          }
+        }
       case 'left':
-        return 'right: 100%; bottom: 0;';
+        return {
+          right: '105%',
+          bottom: '0',
+          arrow: {
+            left: '100%',
+            top: '50%',
+            borderColor: 'transparent transparent transparent #000',
+            marginTop: '-5px',
+          }
+        }
       default:
        return '';
     }
@@ -61,16 +97,22 @@ const TooltipText = styled.span`
   z-index: 1;
   display: inline-block;
   margin: 4%;
-  ${({ placement }) => placement}
+  bottom: ${({ placement }) => placement.bottom || 'unset'};
+  left: ${({ placement }) => placement.left || 'unset'};
+  top: ${({ placement }) => placement.top || 'unset'};
+  right: ${({ placement }) => placement.right || 'unset'};
 
   ::after {
+    bottom: ${({ placement }) => placement.arrow.bottom || 'unset'};
+    left: ${({ placement }) => placement.arrow.left || 'unset'};
+    top: ${({ placement }) => placement.arrow.top || 'unset'};
+    right: ${({ placement }) => placement.arrow.right || 'unset'};
+    border-color: ${({ placement }) => placement.arrow.borderColor || 'unset'};
+    margin-top: ${({ placement }) => placement.arrow.marginTop || 'unset'};
+    margin-left: ${({ placement }) => placement.arrow.marginLeft || 'unset'};
     content: " ";
     position: absolute;
-    top: 100%; /* At the bottom of the tooltip */
-    left: 50%;
-    margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #000 transparent transparent transparent;
   }
 `;
